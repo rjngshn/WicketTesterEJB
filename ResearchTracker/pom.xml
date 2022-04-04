@@ -57,25 +57,18 @@
                 <jakartaee>8.0.0</jakartaee>
 	</properties>
 	<dependencies>
-<!--                <dependency>
+               <dependency>
                         <groupId>jakarta.platform</groupId>
                         <artifactId>jakarta.jakartaee-api</artifactId>
                         <version>${jakartaee}</version>
                         <scope>provided</scope>
-                </dependency>-->
+                </dependency>
 		<!--  WICKET DEPENDENCIES -->
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-core</artifactId>
 			<version>${wicket.version}</version>
 		</dependency>
-		<!-- OPTIONAL DEPENDENCY
-		<dependency>
-			<groupId>org.apache.wicket</groupId>
-			<artifactId>wicket-extensions</artifactId>
-			<version>${wicket.version}</version>
-		</dependency>
-		-->
                 <dependency>
                         <groupId>org.wicketstuff</groupId>
                         <artifactId>wicketstuff-javaee-inject</artifactId>
@@ -111,15 +104,6 @@
 			<version>${jetty9.version}</version>
 			<scope>test</scope>
 		</dependency>
-
-		<!-- uncomment if WebSocket support is needed
-		<dependency>
-			<groupId>org.eclipse.jetty.websocket</groupId>
-			<artifactId>javax-websocket-server-impl</artifactId>
-			<version>${jetty9.version}</version>
-			<scope>test</scope>
-		</dependency>
-		-->
 	</dependencies>
 	<build>
                 <finalName>ResearchTracker</finalName>
