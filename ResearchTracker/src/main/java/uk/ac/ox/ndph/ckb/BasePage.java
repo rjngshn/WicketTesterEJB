@@ -6,12 +6,9 @@
  
 package uk.ac.ox.ndph.ckb;
 
-import java.text.MessageFormat;
-import org.apache.wicket.markup.head.CssHeaderItem;
-import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+import javax.ejb.EJB;
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.request.resource.PackageResourceReference;
+import org.apache.wicket.markup.html.basic.Label;
 
 /** 
  *
@@ -20,6 +17,8 @@ import org.apache.wicket.request.resource.PackageResourceReference;
  */
 
 public abstract class BasePage extends WebPage {
+    @EJB(name = "ControllerRts")
+    private ControllerRts mControllerRts;
 
     public BasePage() { super(); }
     
@@ -31,6 +30,7 @@ public abstract class BasePage extends WebPage {
         add(new HeaderPanel("headerpanel")); 
         System.out.println("HeaderPanel done");
         add(new FooterPanel("footerpanel"));
+        add(new Label("helpMessage", mControllerRts.getContactMail()));
         System.out.println("Returning from base page initialize");
     } 
 }
