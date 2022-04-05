@@ -73,7 +73,8 @@
                         <groupId>org.wicketstuff</groupId>
                         <artifactId>wicketstuff-javaee-inject</artifactId>
                         <version>${wicket.version}</version>
-                        <scope>provided</scope>
+			<!-- Setting it to compile ensures successful deployment since the library is not provided by payara -->
+                        <scope>compile</scope>
                 </dependency>
 
 		<!-- LOGGING DEPENDENCIES - SLF4J-SIMPLE -->
