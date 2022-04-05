@@ -23,7 +23,7 @@ public class RTApplication extends WebApplication
 	@Override
 	public Class<? extends WebPage> getHomePage()
 	{
-            return UserPage1.class;
+            return UserPage2.class;
 	}
 
 	/**
@@ -35,6 +35,9 @@ public class RTApplication extends WebApplication
 		super.init();
 
                 getComponentInstantiationListeners().add(new JavaEEComponentInjector(this));
+                getMarkupSettings().setStripWicketTags(true);
+                getMarkupSettings().setCompressWhitespace(true);
+                getRequestCycleSettings().setGatherExtendedBrowserInfo(true);
 
 		// needed for the styling used by the quickstart
 		getCspSettings().blocking()
