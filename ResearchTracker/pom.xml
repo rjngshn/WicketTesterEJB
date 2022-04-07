@@ -18,7 +18,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+<!-- Application was deployed on Payara 5.201 -->
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>uk.ac.ox.ndph.ckb</groupId>
 	<artifactId>ResearchTracker</artifactId>
@@ -56,10 +56,10 @@
                 <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
 		<!--
 		Since wicket 9.8.0 required Java 11, and that is implemented in Jakarta ee version 9.1.0
-		Change was made to following property and the application was deployed on payara version 5.2022.1
+		change was made to following property and the application was deployed on payara version 5.2022.1
 		However the application still did not deploy successfully, throwing NullPointerException when 
 		accessing method of stateless bean.
-		So testing is aborted for time being.
+		So the changes were reverted, and testing aborted for time being.
  		-->
                 <jakartaee>8.0.0</jakartaee>
 	</properties>
