@@ -7,16 +7,18 @@
 
 package uk.ac.ox.ndph.ckb;
 
-import javax.ejb.Stateless;
+import jakarta.enterprise.context.ApplicationScoped;
+
 
 /**
  * @date 2022-04-01
  * @author rajanis
  */
-@Stateless
+@ApplicationScoped
 public class ControllerRts {
     private static int appId;
     private static String rtsPojo;
+    public static final String contactMail = "contactMail";
     public void init(String rtsServiceData){
         rtsPojo = rtsServiceData;
         appId = 2;
@@ -26,11 +28,11 @@ public class ControllerRts {
         return appId;
     }
     
-    public String getContactMail()  {
+    public static String getContactMail()  {
         return "ContactEmail";
     }
     
-    public String getLoginMessage() {
+    public static String getLoginMessage() {
         return "LoginMessage";
     }
 
