@@ -30,7 +30,7 @@ public abstract class BasePage extends WebPage {
         add(new HeaderPanel("headerpanel")); 
         System.out.println("HeaderPanel done");
         add(new FooterPanel("footerpanel"));
-        add(new Label("helpMessage", mControllerRts.getContactMail()));
+        add(new Label("helpMessage", mControllerRts.contactMail));
         System.out.println("Returning from base page initialize");
     } 
 }
