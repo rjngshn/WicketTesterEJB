@@ -54,26 +54,32 @@
                 <maven.war>3.2.3</maven.war>
                 <maven.dependency>3.1.2</maven.dependency>
                 <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
-		<!--
-		Since wicket 9.8.0 required Java 11, and that is implemented in Jakarta ee version 9.1.0
-		change was made to following property and the application was deployed on payara version 5.2022.1
-		However the application still did not deploy successfully, throwing NullPointerException when 
-		accessing method of stateless bean.
-		So the changes were reverted, and testing aborted for time being.
- 		-->
-                <jakartaee>8.0.0</jakartaee>
+                <jakartaee>9.1.0</jakartaee>
 	</properties>
 	<dependencies>
+            <!-- \ty adding Java EE version as well?????????    -->
                <dependency>
                         <groupId>jakarta.platform</groupId>
                         <artifactId>jakarta.jakartaee-api</artifactId>
                         <version>${jakartaee}</version>
-                        <scope>provided</scope>
+                        <scope>compile</scope>
                 </dependency>
+		<!-- Added this dependency since WicketTester was throwing exception ClassNotFoundException: javax.ejb.EJB -->
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+                        <scope>test</scope>
+		</dependency>
 		<!--  WICKET DEPENDENCIES -->
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-core</artifactId>
+			<version>${wicket.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-ioc</artifactId>
 			<version>${wicket.version}</version>
 		</dependency>
                 <dependency>
@@ -83,7 +89,6 @@
 			<!-- Setting it to compile ensures successful deployment since the library is not provided by payara -->
                         <scope>compile</scope>
                 </dependency>
-
 		<!-- LOGGING DEPENDENCIES - SLF4J-SIMPLE -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -102,9 +107,21 @@
 		<!--  JETTY DEPENDENCIES FOR TESTING  -->
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-server</artifactId>
+			<version>${jetty9.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-webapp</artifactId>
 			<scope>test</scope>
 			<version>${jetty9.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-util</artifactId>
+			<version>${jetty9.version}</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
